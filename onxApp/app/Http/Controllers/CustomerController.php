@@ -82,7 +82,10 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $customer->name = $request->name;
+        $customer->surname = $request->surname;
         $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
         $customer->save();
 
         return redirect()->route('customers.index');
