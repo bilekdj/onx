@@ -20,6 +20,9 @@ class CustomerFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
         ];
+
     }
+
+
 }
 

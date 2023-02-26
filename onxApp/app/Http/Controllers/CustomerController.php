@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewCustomerNotification;
+
 
 class CustomerController extends Controller
 {
@@ -43,6 +46,8 @@ class CustomerController extends Controller
         $customer->phone = $request->phone;
         $customer->address = $request->address;
         $customer->save();
+
+        Notification::route('mail', 'to@example.com')->notify(new NewCustomerNotification($customer));
 
         return redirect()->route('customers.index')->with('success', 'Klient został dodany!');
     }
