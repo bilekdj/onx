@@ -44,7 +44,7 @@ class CustomerController extends Controller
         $customer->address = $request->address;
         $customer->save();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Klient został dodany!');
     }
 
     /**
@@ -88,7 +88,7 @@ class CustomerController extends Controller
         $customer->address = $request->address;
         $customer->save();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Klient został zaktualizowany!');
     }
 
     /**
@@ -97,11 +97,13 @@ class CustomerController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function destroy(Customer $customer)
     {
-        $customer = Customer::find($id);
         $customer->delete();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Klient został usunięty!');
     }
+
+//    }
 }

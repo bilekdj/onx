@@ -5,17 +5,17 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Customers</div>
+                    <div class="card-header">Klienci</div>
 
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Surname</th>
+                                <th>Imię</th>
+                                <th>Nazwisko</th>
                                 <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
+                                <th>Telefon</th>
+                                <th>Adres</th>
                             </tr>
                             </thead>
                             <tbody>
