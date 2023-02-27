@@ -35,4 +35,12 @@
             </div>
         </div>
     </div>
+    <script>
+        {{--const app = new Vue({--}}
+        {{--    el: '#app',--}}
+        {{--    data: {--}}
+        {{--        customers: {!! json_encode($customers) !!}--}}
+        {{--    }--}}
+        {{--});--}}
+    </script>
 @endsection

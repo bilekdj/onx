@@ -12,27 +12,27 @@
 
                             <div class="form-group">
                                 <label for="name">Imię:</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
+                                <input type="text" name="name" id="name" class="form-control" required v-model="name">
                             </div>
 
                             <div class="form-group">
                                 <label for="surname">Nazwisko:</label>
-                                <input type="text" name="surname" id="surname" class="form-control" required>
+                                <input type="text" name="surname" id="surname" class="form-control" required v-model="surname">
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" name="email" id="email" class="form-control" required>
+                                <input type="email" name="email" id="email" class="form-control" required v-model="email">
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Telefon:</label>
-                                <input type="text" name="phone" id="phone" class="form-control" required>
+                                <input type="text" name="phone" id="phone" class="form-control" required v-model="phone">
                             </div>
 
                             <div class="form-group">
                                 <label for="address">Adres:</label>
-                                <textarea name="address" id="address" class="form-control" rows="3" required></textarea>
+                                <textarea name="address" id="address" class="form-control" rows="3" required v-model="address"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -47,3 +47,6 @@
     </div>
 @endsection
 
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
+@endsection

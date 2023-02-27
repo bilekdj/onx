@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CustomerResource;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Notification;
@@ -15,10 +16,32 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getAllCustomers()
+    {
+        $customers = Customer::all();
+
+        return response()->json([
+            'customers' => $customers
+        ]);
+    }
+
+    public function getCustomer($id)
+    {
+        $customer = Customer::findOrFail($id);
+
+        return response()->json([
+            'customer' => $customer
+        ]);
+    }
+
+
     public function index()
     {
         $customers = Customer::all();
         return view('customers.index', compact('customers'));
+
+//        return CustomerResource::collection(Customer::all());
     }
 
     /**
@@ -29,6 +52,7 @@ class CustomerController extends Controller
     public function create()
     {
         return view('customers.create');
+
     }
 
     /**
@@ -50,6 +74,12 @@ class CustomerController extends Controller
         Notification::route('mail', 'to@example.com')->notify(new NewCustomerNotification($customer));
 
         return redirect()->route('customers.index')->with('success', 'Klient został dodany!');
+
+//        return response()->json([
+//            'customer' => $customer,
+//            'message' => 'Klient zostal dodany!'
+//        ]);
+
     }
 
     /**
@@ -94,6 +124,12 @@ class CustomerController extends Controller
         $customer->save();
 
         return redirect()->route('customers.index')->with('success', 'Klient został zaktualizowany!');
+
+//        return response()->json([
+//            'customer' => $customer,
+//            'message' => 'Klient zostal zaktualizowany!'
+//        ]);
+
     }
 
     /**
@@ -103,11 +139,19 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy(Customer $customer)
+//    public function destroy(Customer $customer)
+    public function destroy(Customer $id)
     {
+
+        $customer = Customer::find($id);
         $customer->delete();
 
         return redirect()->route('customers.index')->with('success', 'Klient został usunięty!');
+
+//        return response()->json([
+//            'message' => 'Klient zostal usunięty!'
+//        ]);
+
     }
 
 //    }
